@@ -19,7 +19,9 @@ binPort = int(sys.argv[1])
 #reading video:
 vidPath= sys.argv[2]
 videoData = cv.VideoCapture(vidPath)
-###framesCount = int(video.get(cv.CAP_PROP_FRAME_COUNT))
+framesCount = int(videoData.get(cv.CAP_PROP_FRAME_COUNT))
+framesCount= min(500,framesCount+1)
+
 #connection:
 context = zmq.Context()
 socket = context.socket(zmq.PUSH)
@@ -27,19 +29,15 @@ socket.bind("tcp://127.0.0.1:%s" % binPort)
 
 #processing:
 frameNo = 1
-while(videoData.isOpened()):
+for frameNo in range (1,framesCount):
     ret,frame = videoData.read()
     #failed to read the frame:
     if ret == False:
         break
     #send one frame every 30 frame
-    if frameNo%30 == 0:
-        data = process(frame,frameNo)
-        #sending
-        socket.send_pyobj(data)
-    frameNo+=1
-videoData.release()
-cv.destroyAllWindows()
+    data = process(frame,frameNo)
+    #sending
+    socket.send_pyobj(data)
 
 #finish:
 data = { 'frame' : None}
