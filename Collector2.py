@@ -4,6 +4,7 @@ import numpy as np
 
 def writeFile(lst,f,OF):
     OF.write('Frame #' + str(f) + ':\n' + 'No. Contours: ' + str(len(lst)) + '\n')
+    
     for c in lst:
         OF.write('\t* Xmin: ' + str(c[0]))
         OF.write('\tYmin: ' + str(c[1]))
@@ -13,6 +14,9 @@ def writeFile(lst,f,OF):
 # Conusmers# Port
 N = int(sys.argv[1]) #1
 port = int(sys.argv[2]) #5556
+print("Collector2")
+print("Collector: " + str(port))
+
 context = zmq.Context()
 socket = context.socket(zmq.PULL)
 socket.bind("tcp://127.0.0.1:%s" % port)
@@ -28,5 +32,6 @@ while finished < N:
     else:
         frame += 1
         writeFile(data['contours'],data['frameNo'],outFile)
+        # print(data['frameNo'])
 
 outFile.close()

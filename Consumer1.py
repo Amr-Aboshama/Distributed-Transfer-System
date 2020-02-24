@@ -13,6 +13,8 @@ def otsu_th(img):
 #ports:
 producerPort = int(sys.argv[1])
 collectorPort = int(sys.argv[2])
+print("Consumer1")
+print("Prod: " + str(producerPort) + " Coll: " + str(collectorPort))
 
 #connection:
 context = zmq.Context()
@@ -30,6 +32,7 @@ while True:
     if recData['frame'] is None:
         break
     #process:
+    # print(recData['frameNo'])
     processedFrame = otsu_th (recData['frame'])
     sentData = {
         'frameNo' : recData['frameNo'],

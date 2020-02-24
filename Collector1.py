@@ -7,6 +7,9 @@ N = int(sys.argv[1])
 pullPort = int(sys.argv[2])
 pushPort = int(sys.argv[3])
 
+print("Collector1")
+print("Pull: " + str(pullPort) + " Push: " + str(pushPort))
+
 otherMachineIP = "127.0.0.1"
 
 #connection:
@@ -28,8 +31,11 @@ while True:
         if finished == N :
             break
     #send:
+    # else:
+        # print(recData['frameNo'])
     socketPush.send_pyobj(recData)
 
 #finish:
 endPoint = {'otsu' : None}
-socketPush.send_pyobj(endPoint)
+for i in range(0,N):
+    socketPush.send_pyobj(endPoint)

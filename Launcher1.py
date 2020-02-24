@@ -16,11 +16,11 @@ for i in range(0,N):
     
     if i%2!=0:
         #Run Collectors1
-        os.system('start cmd /k py Collector1.py 2' + str(collectorPullPort) + ' ' + str(collectorPushPort))
+        os.system('start cmd /k py Collector1.py 2 ' + str(collectorPullPort) + ' ' + str(collectorPushPort))
         collectorPullPort += 1
         collectorPushPort += 1
 if N%2!=0:
-        os.system('start cmd /k py Collector1.py 1' + str(collectorPullPort) + ' ' + str(collectorPushPort))
+        os.system('start cmd /k py Collector1.py 1 ' + str(collectorPullPort) + ' ' + str(collectorPushPort))
 
 #Run Producer
 os.system('start cmd /k py Producer.py ' + str(N) + ' ' + str(producerPort) + ' ' + str(videoPath))

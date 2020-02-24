@@ -12,8 +12,12 @@ def getContours(mat):
     return ret
 
 # PullPort PushPort
-portPull = int(sys.argv[1]) #5557
-portPush = int(sys.argv[2]) #5556
+pullPort = int(sys.argv[1]) #5557
+pushPort = int(sys.argv[2]) #5556
+
+print("Consumer2")
+print("Pull: " + str(pullPort) + " Push: " + str(pushPort))
+
 context = zmq.Context()
 
 otherMachineIP = "127.0.0.1"
@@ -22,11 +26,11 @@ otherMachineIP = "127.0.0.1"
 #Pulling
 socketPull = context.socket(zmq.PULL)
 #
-socketPull.connect("tcp://" + otherMachineIP + ":%s" % portPull)
+socketPull.connect("tcp://" + otherMachineIP + ":%s" % pullPort)
 
 #Pushing
 socketPush = context.socket(zmq.PUSH)
-socketPush.connect("tcp://127.0.0.1:%s" % portPush)
+socketPush.connect("tcp://127.0.0.1:%s" % pushPort)
 
 
 while True:
@@ -37,6 +41,7 @@ while True:
     obj = { 'frameNo' : data['frameNo'],
             'contours' : getContours(data['otsu'])
             }
+    # print(data['frameNo'])
     socketPush.send_pyobj(obj)
 
 obj = {'contours' : None}
