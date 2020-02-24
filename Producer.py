@@ -30,10 +30,7 @@ socket.bind("tcp://127.0.0.1:%s" % binPort)
 #processing:
 frameNo = 1
 for frameNo in range (1,framesCount):
-    ret,frame = videoData.read()
-    #failed to read the frame:
-    if ret == False:
-        break
+    frame = videoData.read()[1]
     #send one frame every 30 frame
     data = process(frame,frameNo)
     #sending
