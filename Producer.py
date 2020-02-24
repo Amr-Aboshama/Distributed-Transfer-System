@@ -14,10 +14,11 @@ def process(img,frameNo):
     return data
 
 #ports:
-binPort = int(sys.argv[1])
+N = int(sys.argv[1])
+binPort = int(sys.argv[2])
 
 #reading video:
-vidPath= sys.argv[2]
+vidPath= sys.argv[3]
 videoData = cv.VideoCapture(vidPath)
 framesCount = int(videoData.get(cv.CAP_PROP_FRAME_COUNT))
 framesCount= min(500,framesCount+1)
@@ -38,4 +39,5 @@ for frameNo in range (1,framesCount):
 
 #finish:
 data = { 'frame' : None}
-socket.send_pyobj(data)
+for i in range (0,N):
+    socket.send_pyobj(data)
