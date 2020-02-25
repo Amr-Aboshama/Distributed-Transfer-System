@@ -32,6 +32,6 @@ while finished < N:
     else:
         frame += 1
         writeFile(data['contours'],data['frameNo'],outFile)
-        # print(data['frameNo'])
+        print(data['frameNo'])
 
 outFile.close()

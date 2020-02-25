@@ -32,7 +32,7 @@ while True:
     if recData['frame'] is None:
         break
     #process:
-    # print(recData['frameNo'])
+    print(recData['frameNo'])
     processedFrame = otsu_th (recData['frame'])
     sentData = {
         'frameNo' : recData['frameNo'],

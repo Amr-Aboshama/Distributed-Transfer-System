@@ -39,7 +39,7 @@ for frameNo in range (1,framesCount):
     data = process(frame,frameNo)
     #sending
     socket.send_pyobj(data)
-    # print(frameNo)
+    print(frameNo)
 
 #finish:
 data = { 'frame' : None}

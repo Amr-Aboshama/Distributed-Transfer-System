@@ -29,8 +29,8 @@ while True:
         if finished == N :
             break
     #send:
-    # else:
-        # print(recData['frameNo'])
+    else:
+        print(recData['frameNo'])
     socketPush.send_pyobj(recData)
 
 #finish:

@@ -41,7 +41,7 @@ while True:
     obj = { 'frameNo' : data['frameNo'],
             'contours' : getContours(data['otsu'])
             }
-    # print(data['frameNo'])
+    print(data['frameNo'])
     socketPush.send_pyobj(obj)
 
 obj = {'contours' : None}
