@@ -19,7 +19,7 @@ print("Collector: " + str(port))
 
 context = zmq.Context()
 socket = context.socket(zmq.PULL)
-socket.bind("tcp://127.0.0.1:%s" % port)
+socket.bind("tcp://25.1.34.71:%s" % port)
 
 finished = 0
 frame = 0

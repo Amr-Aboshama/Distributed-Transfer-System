@@ -20,7 +20,7 @@ print("Pull: " + str(pullPort) + " Push: " + str(pushPort))
 
 context = zmq.Context()
 
-otherMachineIP = "127.0.0.1"
+otherMachineIP = "25.74.93.108"
 
 
 #Pulling
@@ -30,7 +30,7 @@ socketPull.connect("tcp://" + otherMachineIP + ":%s" % pullPort)
 
 #Pushing
 socketPush = context.socket(zmq.PUSH)
-socketPush.connect("tcp://127.0.0.1:%s" % pushPort)
+socketPush.connect("tcp://25.1.34.71:%s" % pushPort)
 
 
 while True:
