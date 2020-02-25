@@ -29,7 +29,7 @@ framesCount= min(501,framesCount+1)
 #connection:
 context = zmq.Context()
 socket = context.socket(zmq.PUSH)
-socket.bind("tcp://127.0.0.1:%s" % binPort)
+socket.bind("tcp://25.74.93.108:%s" % binPort)
 
 #processing:
 frameNo = 1

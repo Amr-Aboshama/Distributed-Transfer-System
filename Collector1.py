@@ -10,16 +10,14 @@ pushPort = int(sys.argv[3])
 print("Collector1")
 print("Pull: " + str(pullPort) + " Push: " + str(pushPort))
 
-otherMachineIP = "127.0.0.1"
-
 #connection:
 context = zmq.Context()
 #pulling connection:
 socketPull = context.socket(zmq.PULL)
-socketPull.bind("tcp://127.0.0.1:%s" % pullPort)
+socketPull.bind("tcp://25.74.93.108:%s" % pullPort)
 #Pushing connection:
 socketPush = context.socket(zmq.PUSH)
-socketPush.bind("tcp://" + otherMachineIP + ":%s" % pushPort)
+socketPush.bind("tcp://25.74.93.108:%s" % pushPort)
 
 
 finished = 0

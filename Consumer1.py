@@ -20,10 +20,10 @@ print("Prod: " + str(producerPort) + " Coll: " + str(collectorPort))
 context = zmq.Context()
 #pulling connection:
 socketPull = context.socket(zmq.PULL)
-socketPull.connect("tcp://127.0.0.1:%s" % producerPort)
+socketPull.connect("tcp://25.74.93.108:%s" % producerPort)
 #Pushing connection:
 socketPush = context.socket(zmq.PUSH)
-socketPush.connect("tcp://127.0.0.1:%s" % collectorPort)
+socketPush.connect("tcp://25.74.93.108:%s" % collectorPort)
 
 #processing:
 while True:
